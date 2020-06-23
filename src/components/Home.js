@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { AuthContext } from "../App";
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 export default function Home() {
   const { state, dispatch } = useContext(AuthContext);
@@ -10,23 +13,18 @@ export default function Home() {
     return <Redirect to="/login" />;
   }
 
-//   const { avatar_url, name, public_repos, followers, following } = state.user
-
-  const handleLogout = () => {
-    dispatch({
-      type: "LOGOUT"
-    });
-  } 
-
   return (
-    <div className="home">
-      <div className="home-container">
-        <button onClick={()=> handleLogout()}>Logout</button>
-        <div className="identity-boxes">
-          <div>MAKER</div>
-          <div>MENTOR</div>
-        </div>
-      </div>
-    </div>
+    <Container>
+        <Row>
+            <Col className="text-center">
+                <Link to="/maker">
+                    <Button className="home-btn">MAKER</Button>
+                </Link>
+                <Link to="/mentor">
+                    <Button className="home-btn">MENTOR</Button>
+                </Link>
+            </Col>
+        </Row>
+    </Container>
   );
 }

@@ -2,37 +2,16 @@
   text-align: center;
 }
 
-.home-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  font-family: Arial;
-  button {
-    all: unset;
-    width: 100px;
-    height: 35px;
-    margin: 10px 10px 0 0;
-    align-self: flex-end;
-    background-color: #0041C2;
-    color: #fff;
-    text-align: center;
-    border-radius: 3px;
-    border: 1px solid #0041C2;
-    &:hover{
-      background-color: #fff;
-      color: #0041C2;
-    }
-  }
-  >div {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    font-size: 18px;
-    justify-content: center;
-    align-items: center;
-  }
-  .identity-boxes {
-    display: flex;
-    justify-content: space-evenly;
-  }
+.home-btn {
+  width: 180px;
+  height: 150px;
+  margin: 50px;
+}
+
+.repo-detail {
+  margin-right: 50px;
+}
+
+.repo-icon {
+  margin-right: 10px;
 }
