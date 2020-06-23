@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "opencr",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,17 +12,20 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
     "formik": "^2.1.4",
+    "http-proxy-middleware": "^1.0.4",
     "mdi-react": "^7.3.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1"
   },
   "scripts": {
+    "dev": "concurrently \"npm start\" \"node server/server.js\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
   }
 }

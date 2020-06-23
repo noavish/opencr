@@ -12,7 +12,7 @@ export default function Home() {
   if (!state.isLoggedIn) {
     return <Redirect to="/login" />;
   }
-
+  
   return (
     <Container>
         <Row>
