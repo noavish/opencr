@@ -10,12 +10,11 @@ export default function Home() {
     return <Redirect to="/login" />;
   }
 
-//   const { avatar_url, name, public_repos, followers, following } = state.user
-
   const handleLogout = () => {
-    dispatch({
+    fetch("/auth/logout")
+    .then((res) => dispatch({
       type: "LOGOUT"
-    });
+    }));
   } 
 
   return (
