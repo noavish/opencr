@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { data } from './../reposMockData';
-import CardDeck from 'react-bootstrap/CardDeck';
 import Repo from "./Repo";
 
 export default class ReposList extends Component {
 
   constructor() {
     super();
-    this.state = data;
+    this.state = {
+        repos: []
+    };
+  }
+
+  componentDidMount() {
+    fetch('/api/github/repos')
+    .then(res => res.json())
+    .then(result => {
+        this.setState({repos: result.repos});
+    });
   }
 
   render() {
