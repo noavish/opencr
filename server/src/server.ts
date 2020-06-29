@@ -5,6 +5,7 @@ import crypto from 'crypto';
 import passport from 'passport';
 import GithubStrategy from 'passport-github'
 import GithubApiInitializer from './GithubApiInitializer';
+import "reflect-metadata";
 
 require('dotenv').config()
 
