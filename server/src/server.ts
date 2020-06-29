@@ -1,10 +1,10 @@
-const express = require("express");
-const cookieParser = require('cookie-parser')
-const expressSession = require('express-session')
-const crypto = require('crypto')
-const passport = require('passport')
-const GithubStrategy = require('passport-github').Strategy
-const githubApiInitializer = require('./githubApiInitializer')
+import express from "express";
+import cookieParser from 'cookie-parser';
+import expressSession from 'express-session';
+import crypto from 'crypto';
+import passport from 'passport';
+import GithubStrategy from 'passport-github'
+import GithubApiInitializer from './GithubApiInitializer';
 
 require('dotenv').config()
 
@@ -47,7 +47,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/github', githubApiInitializer)
+app.use('/api/github', GithubApiInitializer)
 
 app.get('/auth/github/login', passport.authenticate('github'))
 
@@ -70,9 +70,9 @@ app.get('/auth/logout', function(req, res) {
 })
 
 app.get('/api/github/repos', async (req, res) => {
-    let githubData
+    let githubData: any;
     try {
-        githubData = await req.githubData.getRepos()
+        githubData = await res.locals.githubData.getRepos()
     } catch (error) {
         githubData = { error: error }
     }
