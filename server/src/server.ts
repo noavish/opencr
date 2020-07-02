@@ -1,11 +1,15 @@
 import express from "express";
 import cookieParser from 'cookie-parser';
 import expressSession from 'express-session';
+import {Request, Response} from "express";
 import crypto from 'crypto';
 import passport from 'passport';
 import GithubStrategy from 'passport-github'
 import GithubApiInitializer from './GithubApiInitializer';
+import {createConnection} from "typeorm";
+import {User} from "./entity/User";
 import "reflect-metadata";
+import Tag from "./entity/tag";
 
 require('dotenv').config()
 
@@ -68,6 +72,15 @@ app.get('/auth/setcookie', function(req, res) {
 app.get('/auth/logout', function(req, res) {
     res.clearCookie(COOKIE)
     res.redirect('/')
+})
+
+createConnection().then(connection => {
+    const tagsRepository = connection.getRepository(Tag);
+
+    app.get('/api/tags', async function(req: Request, res: Response) {
+        const tags = await tagsRepository.find();
+        res.json(tags);
+    });
 })
 
 app.get('/api/github/repos', async (req, res) => {
